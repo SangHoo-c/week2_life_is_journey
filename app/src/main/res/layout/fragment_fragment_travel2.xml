@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".FragmentTravel2">
+    tools:context=".FragmentTravel2"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/selected_region"
@@ -19,6 +20,8 @@
         android:textStyle="bold"/>
 
     <androidx.cardview.widget.CardView
+        android:layout_below="@+id/selected_region"
+        android:layout_centerHorizontal="true"
         android:id="@+id/cardmap"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -36,6 +39,7 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:layout_below="@+id/cardmap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -53,6 +57,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/button_1"
+                android:background="#EC6156"
                 android:scaleType="centerCrop">
             </ImageView>
         </androidx.cardview.widget.CardView>
@@ -69,6 +74,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/button_2"
+                android:background="#F5BF4F"
                 android:scaleType="centerCrop">
             </ImageView>
         </androidx.cardview.widget.CardView>
@@ -85,10 +91,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/button_3"
+                android:background="#62C655"
                 android:scaleType="centerCrop">
             </ImageView>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

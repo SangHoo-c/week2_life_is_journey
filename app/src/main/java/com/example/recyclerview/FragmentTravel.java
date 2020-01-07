@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -24,6 +26,8 @@ public class FragmentTravel extends Fragment {
 
 
     CheckBox btn_low_money, btn_high_money;
+
+    RelativeLayout relativeLayout_1;
 
     final String[] travel_continent = new String[]{"asia", "europe", "america", "oceania", "middle_east"};
     final String[] travel_type = new String[]{"food", "scenery", "activity", "rest", "extreme"};
@@ -90,13 +94,17 @@ public class FragmentTravel extends Fragment {
                 args.putStringArrayList("travel_type_selected", travel_type_selected);
                 args.putStringArrayList("travel_money_selected", travel_money_selected);
 
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
                 FragmentTravel2 fragmentTravel2 = new FragmentTravel2();
                 fragmentTravel2.setArguments(args);
-                fragmentTransaction.replace(R.id.fragment_travel, fragmentTravel2);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commitAllowingStateLoss();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_travel, fragmentTravel2, null).addToBackStack(null).commit();
+
+//                fragmentTransaction.replace(R.id., fragmentTravel2);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commitAllowingStateLoss();
             }
         });
         return v;

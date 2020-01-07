@@ -89,6 +89,7 @@ public class FragmentTravel2 extends Fragment {
             fragmentManager.beginTransaction().remove(FragmentTravel2.this).commit();
             fragmentManager.popBackStack();
         }
+        Log.d("19-2341-3401358-1305", Integer.toString(travelRegionSelected.size()));
         int index = new Random().nextInt(travelRegionSelected.size());
 
         title = (TextView) v.findViewById(R.id.selected_region);
