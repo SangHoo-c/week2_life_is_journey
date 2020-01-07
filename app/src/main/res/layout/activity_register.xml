@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        tools:context=".RegisterActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Register"
+            android:textSize="40dp"
+            android:textColor="#333333"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="25dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="75dp"
+            app:cardPreventCornerOverlap="false">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/modify_image_button"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/true_profile"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:text="Name"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/register_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:inputType="textEmailAddress"
+            android:hint="Please enter your name"
+            android:textColorHint="#808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:text="Phone number"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/register_phone_number"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:inputType="textEmailAddress"
+            android:hint="Please enter your phone number"
+            android:textColorHint="#808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:text="Email"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:inputType="textEmailAddress"
+            android:hint="Please enter your email"
+            android:textColorHint="#808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:text="Password"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:inputType="textPassword"
+            android:hint="Please enter your password"
+            android:textColorHint="#808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:text="여행해본 지역을 선택해주세요."
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="아시아 및 오세아니아"
+            android:textSize="20dp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Seoul"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="서울" />
+
+            <CheckBox
+                android:id="@+id/Osaka"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="오사카" />
+
+            <CheckBox
+                android:id="@+id/Sapporo"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="삿포로" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Beijing"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="베이징" />
+
+            <CheckBox
+                android:id="@+id/Bangkok"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="방콕" />
+
+            <CheckBox
+                android:id="@+id/Danang"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="다낭" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Taipei"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="타이베이" />
+
+            <CheckBox
+                android:id="@+id/Guam"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="괌" />
+
+            <CheckBox
+                android:id="@+id/Sydney"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="시드니" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Alaska"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="알래스카" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="유럽"
+            android:textSize="20dp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Barcelona"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="바르셀로나"/>
+
+            <CheckBox
+                android:id="@+id/Santorini"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="산토리니" />
+
+            <CheckBox
+                android:id="@+id/Paris"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="파리" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Rome"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="로마" />
+
+            <CheckBox
+                android:id="@+id/Napoli"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="나폴리"/>
+
+            <CheckBox
+                android:id="@+id/England"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="잉글랜드" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Nederland"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="네덜란드" />
+
+            <CheckBox
+                android:id="@+id/Iceland"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="아이슬란드"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="아메리카"
+            android:textSize="20dp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Peru"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="페루"/>
+
+            <CheckBox
+                android:id="@+id/Brazil"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="브라질"/>
+
+            <CheckBox
+                android:id="@+id/Cuba"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="쿠바"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Canada"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="캐나다" />
+
+            <CheckBox
+                android:id="@+id/LosAngeles"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="LA"/>
+
+            <CheckBox
+                android:id="@+id/LasVagas"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="라스베가스"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="중동"
+            android:textSize="20dp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Congo"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="콩고"/>
+
+            <CheckBox
+                android:id="@+id/Madagascar"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="마다가스카르"/>
+
+            <CheckBox
+                android:id="@+id/Egypt"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="이집트" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <CheckBox
+                android:id="@+id/Israel"
+                android:layout_marginLeft="15dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="이스라엘" />
+
+            <CheckBox
+                android:id="@+id/Dubai"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="두바이"/>
+
+            <CheckBox
+                android:id="@+id/Iraq"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="이라크"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#87cefa"
+            android:text="REGISTER"
+            android:textSize="20dp"/>
+    </LinearLayout>
+</ScrollView>
