@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     public FragmentContacts fragmentContacts;
     public Fragment_Gallery fragmentGallery;
-
+    public FragmentTravel fragmentTravel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentContacts = new FragmentContacts(accountName);
         fragmentGallery = new Fragment_Gallery();
+        fragmentTravel = new FragmentTravel();
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout_id);
         viewPager = (ViewPager) findViewById(R.id.viewpager_id);
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // Add Fragment and set tab name
         adapter.AddFragment(fragmentContacts, "");
         adapter.AddFragment(fragmentGallery, "");
-        adapter.AddFragment(new FragmentRestaurant(), "");
+        adapter.AddFragment(fragmentTravel, "");
         viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
