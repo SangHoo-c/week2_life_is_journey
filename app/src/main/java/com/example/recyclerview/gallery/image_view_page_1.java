@@ -53,13 +53,9 @@ public class image_view_page_1 extends Fragment {
     TextView country, like_count;
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
-
     LottieAnimationView animationView;
-
     Todos todos;
-
     boolean isGpsEnabled, isNetWorkEnabled;
-
     int flag=0;
 
     @Override

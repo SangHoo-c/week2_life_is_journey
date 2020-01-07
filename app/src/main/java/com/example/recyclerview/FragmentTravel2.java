@@ -1,6 +1,7 @@
 package com.example.recyclerview;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.recyclerview.gallery.Image_inlarge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FragmentTravel2 extends Fragment {
+public class FragmentTravel2<Butto> extends Fragment {
     View v;
 
     ArrayList<TravelRegion> travelRegions = new ArrayList<>();
@@ -39,6 +43,12 @@ public class FragmentTravel2 extends Fragment {
     final String[] longitudes = new String[]{"37.55", "34.68", "43.06", "39.93", "13.76", "16.05", "25.03", "13.45", "-33.87", "61.63", "-2.62", "-20.44", "27.65", "31.686", "25.131", "33.8635", "41.397", "36.39", "48.85", "41.9", "40.85", "54.6", "55.29", "64.95", "-11.07", "-15.4", "21.85", "57.31", "34.05", "36.16"};
 
 
+    //GOTO image gallery button
+    Button button_gallery;
+
+    //선택받은 나라 코드
+    Integer country_code2 = 1;
+
     public FragmentTravel2() {
         // Required empty public constructor
     }
@@ -46,27 +56,39 @@ public class FragmentTravel2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_fragment_travel2, container, false);
-        ArrayList<String> travel_continent_selected = getArguments().getStringArrayList("travel_continent_selected");
-        ArrayList<String> travel_type_selected = getArguments().getStringArrayList("travel_type_selected");
-        ArrayList<String> travel_money_selected = getArguments().getStringArrayList("travel_money_selected");
+//        ArrayList<String> travel_continent_selected = getArguments().getStringArrayList("travel_continent_selected");
+//        ArrayList<String> travel_type_selected = getArguments().getStringArrayList("travel_type_selected");
+//        ArrayList<String> travel_money_selected = getArguments().getStringArrayList("travel_money_selected");
 
-        TravelRegion travelRegion;
-        ArrayList<TravelRegion> travelRegionSelected = new ArrayList<>();
-        for (int i = 0; i < engNames.length; i++) {
-            travelRegion = new TravelRegion(engNames[i], korNames[i], continents[i], new ArrayList<String>(Arrays.asList(types[i].split(",")))
-                    , money[i], Long.parseLong(latitudes[i]), Long.parseLong(longitudes[i]));
-            travelRegions.add(travelRegion);
-        }
-        for (int i = 0; i < travelRegions.size(); i++) {
-            if (travel_continent_selected.contains(travelRegions.get(i).getContinent())) {
-                if (intersection(travel_type_selected, travelRegions.get(i).getType()).size() > 0) {
-                    if (Integer.parseInt(travel_money_selected.get(0)) >= Integer.parseInt(travelRegions.get(i).getMoney())) {
-                        Log.d("selected!", travelRegions.get(i).getKorName());
-                        travelRegionSelected.add(travelRegions.get(i));
-                    }
-                }
+//        TravelRegion travelRegion;
+//        ArrayList<TravelRegion> travelRegionSelected = new ArrayList<>();
+//        for (int i = 0; i < engNames.length; i++) {
+//            travelRegion = new TravelRegion(engNames[i], korNames[i], continents[i], new ArrayList<String>(Arrays.asList(types[i].split(",")))
+//                    , money[i], Long.parseLong(latitudes[i]), Long.parseLong(longitudes[i]));
+//            travelRegions.add(travelRegion);
+//        }
+//        for (int i = 0; i < travelRegions.size(); i++) {
+//            if (travel_continent_selected.contains(travelRegions.get(i).getContinent())) {
+//                if (intersection(travel_type_selected, travelRegions.get(i).getType()).size() > 0) {
+//                    if (Integer.parseInt(travel_money_selected.get(0)) >= Integer.parseInt(travelRegions.get(i).getMoney())) {
+//                        Log.d("selected!", travelRegions.get(i).getKorName());
+//                        travelRegionSelected.add(travelRegions.get(i));
+//                    }
+//                }
+//            }
+//        }
+
+        button_gallery = (Button) v.findViewById(R.id.goto_gallery);
+        button_gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_gallery = new Intent(getActivity(), Image_inlarge.class);
+                intent_gallery.putExtra("country_code2", String.valueOf(country_code2));
+//                intent_gallery.putExtra("country_code2", country_code2);
+                startActivity(intent_gallery);
             }
-        }
+        });
+
 
         return v;
     }
