@@ -35,7 +35,7 @@ public class RegisterActivity extends Activity {
     Button btn_register;
 
     String imgPath = "";
-    int photo_id = 0;
+    String photo_uri = "";
 
     final String[] regions = new String[]{"Seoul", "Osaka", "Sapporo", "Beijing", "Bangkok", "Danang", "Taipei", "Guam", "Sydney", "Alaska"
             , "Barcelona", "Santorini", "Paris", "Rome", "Napoli", "England", "Nederland", "Iceland", "Peru", "Brazil", "Cuba", "Canada"
@@ -81,22 +81,21 @@ public class RegisterActivity extends Activity {
                     checkBox = (CheckBox) findViewById(resID);
                     if (checkBox.isChecked()) regions_visited.add(region);
                 }
-                Log.d("photo_id", Integer.toString(photo_id));
                 Log.d("name", register_name.getText().toString());
                 Log.d("register_email", register_email.getText().toString());
                 Log.d("register_password", register_password.getText().toString());
-                Log.d("regions_visited", regions_visited.toArray(new String[regions_visited.size()])[0]);
-                registerUser(photo_id,
+                Log.d("regions_visited_number", String.join(", ", regions_visited));
+                registerUser(photo_uri,
                         register_name.getText().toString(),
                         register_phone_number.getText().toString().replace("-", ""),
                         register_email.getText().toString(),
                         register_password.getText().toString(),
-                        regions_visited.toArray(new String[regions_visited.size()]));
+                        String.join(",", regions_visited));
             }
         });
     }
 
-    private void registerUser(int photo_id, String name, String phone_number, String email, String password, String[] regions) {
+    private void registerUser(String photo_uri, String name, String phone_number, String email, String password, String regions_visited) {
         if (name.isEmpty()) {
             Toast.makeText(RegisterActivity.this, "Name cannot be empty.", Toast.LENGTH_SHORT).show();
             return;
@@ -108,10 +107,10 @@ public class RegisterActivity extends Activity {
             return;
         } else if (password.isEmpty()) {
             Toast.makeText(RegisterActivity.this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
-        } else if (regions.length == 0) {
+        } else if (regions_visited.length() == 0) {
             Toast.makeText(RegisterActivity.this, "Please select at least one region", Toast.LENGTH_SHORT).show();
         }
-        compositeDisposable.add(iRetrofit.registerUser(photo_id, name, phone_number, email, password, regions)
+        compositeDisposable.add(iRetrofit.registerUser(photo_uri, name, phone_number, email, password, regions_visited)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {
@@ -130,15 +129,7 @@ public class RegisterActivity extends Activity {
 
             Cursor cursor = null;
             try {
-                String[] proj = new String[]{
-                        ContactsContract.CommonDataKinds.Phone.NUMBER,
-                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                        ContactsContract.Contacts.PHOTO_ID,
-                        ContactsContract.Contacts._ID
-                };
-                cursor = getContentResolver().query(photoUri, proj, null, null, null);
-//                cursor.moveToFirst();
-//                photo_id = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_ID));
+                photo_uri = photoUri.toString();
                 setImage(getPathFromUri(photoUri));
             } finally {
                 if (cursor != null) cursor.close();

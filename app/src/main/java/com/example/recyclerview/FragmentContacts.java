@@ -136,6 +136,7 @@ public class FragmentContacts extends Fragment implements TextWatcher {
                 ContactsContract.Contacts.PHOTO_ID,
                 ContactsContract.Contacts._ID
         };
+        Log.d("12340983215-138-", uri.toString());
         String[] selectionArgs = null;
         String sortOrder = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
         Cursor cursor = getContext().getContentResolver().query(uri, projection, null, selectionArgs, sortOrder);

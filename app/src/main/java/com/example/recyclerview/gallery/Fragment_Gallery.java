@@ -27,7 +27,7 @@ public class Fragment_Gallery extends Fragment {
     //grid view 에 각 나라의 사진을 한개씩 보여주려함
     //0 --> snatorini
     //1 --> rome
-    int image_travel_arr[] ={
+    int image_travel_arr[] = {
             R.drawable.icon_seoul,
             R.drawable.icon_osaka,
             R.drawable.icon_sapporo,
@@ -65,14 +65,14 @@ public class Fragment_Gallery extends Fragment {
 
     };
 
-    Len len = new Len(0,0);
+    Len len = new Len(0, 0);
 
     private Len getScreenSize() {
         Point point = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(point);
 
         len.height = point.x / 3;
-        len.width = point.x/3;
+        len.width = point.x / 3;
 //        len.width = point.y / 3;
         return len;
     }
@@ -81,8 +81,8 @@ public class Fragment_Gallery extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_images,null);
-        GridView gv = (GridView)rootView.findViewById(R.id.gridView_image);
+        View rootView = inflater.inflate(R.layout.frag_images, null);
+        GridView gv = (GridView) rootView.findViewById(R.id.gridView_image);
         final Image_Adapter iA = new Image_Adapter(getActivity());
         gv.setAdapter(iA);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,21 +96,19 @@ public class Fragment_Gallery extends Fragment {
     }
 
 
-    class Image_Adapter extends BaseAdapter{
+    class Image_Adapter extends BaseAdapter {
 
         Image_Adapter(Context context) {
             mContext = context;
-
         }
 
-        public final void callImageViewer(int selectedIndex){
+        public final void callImageViewer(int selectedIndex) {
             Intent i = new Intent(mContext, image_inlarge.class);
             //String imgPath = getImageInfo(imgData, geoData, thumbsIDList.get(selectedIndex));
             i.putExtra("arr_position", selectedIndex);
             Log.v("FileName : ", String.valueOf(selectedIndex));
             startActivityForResult(i, 1);
         }
-
 
         @Override
         public int getCount() {
@@ -131,13 +129,12 @@ public class Fragment_Gallery extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView _imageView;
-            if (convertView==null){
+            if (convertView == null) {
                 _imageView = new ImageView(mContext);
-                _imageView.setLayoutParams(new GridView.LayoutParams(getScreenSize().height,getScreenSize().width));
+                _imageView.setLayoutParams(new GridView.LayoutParams(getScreenSize().height, getScreenSize().width));
                 _imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                _imageView.setPadding(4,4,4,4);
-            }
-            else{
+                _imageView.setPadding(4, 4, 4, 4);
+            } else {
                 _imageView = (ImageView) convertView;
             }
             Log.v("accept..!", String.valueOf(position));
@@ -149,7 +146,7 @@ public class Fragment_Gallery extends Fragment {
     }
 
 
-    public class Len{
+    public class Len {
         int height;
         int width;
 

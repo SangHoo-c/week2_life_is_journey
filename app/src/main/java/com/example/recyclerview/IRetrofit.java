@@ -12,12 +12,12 @@ public interface IRetrofit {
     // name, phone_number, photo_id
     @POST("register")
     @FormUrlEncoded
-    Observable<String> registerUser(@Field("photo_id") int photo_id,
+    Observable<String> registerUser(@Field("photo_uri") String photo_uri,
                                     @Field("name") String name,
                                     @Field("phone_number") String phone_number,
                                     @Field("email") String email,
                                     @Field("password") String password,
-                                    @Field("regions") String[] regions);
+                                    @Field("regions_visited") String regions_visited);
     @POST("login")
     @FormUrlEncoded
     Observable<String> loginUser(@Field("email") String email,

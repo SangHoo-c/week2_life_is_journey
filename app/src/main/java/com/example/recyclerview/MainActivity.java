@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // Set tab image
         tabLayout.getTabAt(0).setIcon(R.drawable.address_book);
         tabLayout.getTabAt(1).setIcon(R.drawable.gallery);
-        tabLayout.getTabAt(2).setIcon(R.drawable.restaurant_tab);
+        tabLayout.getTabAt(2).setIcon(R.drawable.travel_icon);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
