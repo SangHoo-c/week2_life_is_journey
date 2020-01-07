@@ -23,7 +23,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -37,13 +36,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class image_view_page_1 extends Fragment {
+public class image_view_page_3 extends Fragment {
     Integer country_code;
     String imageUrl_1 = null;
     String activity, food, sight, money, rest;
     FrameLayout frameLayout;
     ImageView background;
-    Fragment p2m = this;
 
     private Animation fab_open, fab_close;
     private Boolean isFabOpen = false;
@@ -57,6 +55,7 @@ public class image_view_page_1 extends Fragment {
     LottieAnimationView animationView;
 
     Todos todos;
+    Fragment p2m = this;
 
     boolean isGpsEnabled, isNetWorkEnabled;
 
@@ -147,8 +146,8 @@ public class image_view_page_1 extends Fragment {
                 if (response.isSuccessful()) {
                     todos = response.body();
                     if (todos != null) {
-                        Log.d("data.photo_()", todos.getContent());
-                        imageUrl_1 = todos.getContent();
+                        Log.d("data.photo_()", todos.getContent2());
+                        imageUrl_1 = todos.getContent2();
                         activity = todos.getActivity();
                         food = todos.getFood();
                         sight = todos.getSight();
@@ -156,7 +155,9 @@ public class image_view_page_1 extends Fragment {
                         rest = todos.getRest();
                         country.setText(todos.getCountry());
                         like_count.setText(todos.getLike());
+
                         Glide.with(frameLayout).load(imageUrl_1).into(background);
+
                         //activity
                         if(activity.equals("0")){
                             like_activity.setBackgroundResource(R.drawable.icon_heart_grey48);
@@ -224,15 +225,10 @@ public class image_view_page_1 extends Fragment {
                     @Override
                     public void onResponse(Call<Todos> call, Response<Todos> response) {
                         if(response.isSuccessful()){
-//                            FragmentManager fragmentManager = getFragmentManager();
-//                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                            fragmentTransaction.replace(((ViewGroup) getView().getParent()).getId(), new image_view_page_1());
-//                            fragmentTransaction.commitAllowingStateLoss();
+                            Log.d("like it!!!", String.valueOf(todos.getLike()));
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
                             ft.detach(p2m).attach(p2m).commit();
                             flag=0;
-
-                            Log.d("like it!!!", String.valueOf(todos.getLike()));
                         }
                         else{
                             Log.d("like.. it..fail..", "fail");

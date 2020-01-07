@@ -11,8 +11,9 @@ public class Todos {
     String content;
     String content2;
     String like;
+    String content3;
 
-    public Todos(String id, String country, String activity, String food, String sight, String rest, String money, String content, String content2, String like) {
+    public Todos(String id, String country, String activity, String food, String sight, String rest, String money, String content, String content2, String like, String content3) {
         this.id = id;
         this.country = country;
         this.activity = activity;
@@ -22,6 +23,7 @@ public class Todos {
         this.money = money;
         this.content = content;
         this.content2 = content2;
+        this.content3 = content3;
         this.like = like;
     }
 
@@ -64,5 +66,7 @@ public class Todos {
     public String getLike() {
         return like;
     }
+
+    public String getContent3(){return content3;}
 }
 

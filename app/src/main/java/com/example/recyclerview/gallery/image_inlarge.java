@@ -9,13 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.recyclerview.R;
 
 
 public class image_inlarge extends AppCompatActivity {
-    int MAX_PAGE = 2;
+    int MAX_PAGE = 3;
     Fragment cur_fragment = new Fragment();
 
     int country_code;
@@ -35,14 +36,7 @@ public class image_inlarge extends AppCompatActivity {
         country_code = getIntent().getIntExtra("arr_position",0);
         Log.v("get position value : ", String.valueOf(country_code));
 
-
-
-
     }
-
-
-
-
 
     //view pager adapter 설정
     public class adapter extends FragmentPagerAdapter{
@@ -69,6 +63,13 @@ public class image_inlarge extends AppCompatActivity {
                     Bundle bundle2 = new Bundle(1);
                     bundle2.putInt("Country_code", country_code);
                     cur_fragment.setArguments(bundle2);
+                    break;
+                case 2:
+                    //country code 를 각 이미지 page 에 전달하는 과정
+                    cur_fragment=new image_view_page_3();
+                    Bundle bundle3 = new Bundle(1);
+                    bundle3.putInt("Country_code", country_code);
+                    cur_fragment.setArguments(bundle3);
                     break;
             }
             return cur_fragment;
