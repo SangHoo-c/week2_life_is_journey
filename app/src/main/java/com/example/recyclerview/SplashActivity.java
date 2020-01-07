@@ -12,6 +12,8 @@ import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class SplashActivity extends AppCompatActivity {
 
     String[] PERMISSIONS = {
@@ -26,27 +28,34 @@ public class SplashActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    LottieAnimationView animationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        animationView = findViewById(R.id.start_splash);
+        animationView.setAnimation("start.json");
+        animationView.loop(true);
+        animationView.playAnimation();
+
         checkAddressVerify();
 
         Long appStartTime = System.currentTimeMillis();
         while (!hasPermissions(this, PERMISSIONS)) {
-            if (System.currentTimeMillis() - appStartTime >= 15000) finish();
+            if (System.currentTimeMillis() - appStartTime >= 20000) finish();
         }
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 2500);
     }
 
     public void checkAddressVerify() {

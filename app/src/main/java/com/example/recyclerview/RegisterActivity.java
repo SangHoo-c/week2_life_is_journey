@@ -19,10 +19,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -60,7 +57,7 @@ public class RegisterActivity extends Activity {
         register_photo = (ImageView) findViewById(R.id.modify_image_button);
         register_photo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 startActivityForResult(intent, 3);
@@ -128,9 +125,7 @@ public class RegisterActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 3 && data != null) {
-            File tempFile;
             Uri photoUri = data.getData();
-
             Log.d("original_uri", photoUri.toString());
 
             Cursor cursor = null;
@@ -141,10 +136,9 @@ public class RegisterActivity extends Activity {
                         ContactsContract.Contacts.PHOTO_ID,
                         ContactsContract.Contacts._ID
                 };
-                String sortOrder = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
-//                cursor = getContentResolver().query(photoUri, proj, null, null, null);
+                cursor = getContentResolver().query(photoUri, proj, null, null, null);
 //                cursor.moveToFirst();
-//                photo_id = cursor.getInt(2);
+//                photo_id = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_ID));
                 setImage(getPathFromUri(photoUri));
             } finally {
                 if (cursor != null) cursor.close();
