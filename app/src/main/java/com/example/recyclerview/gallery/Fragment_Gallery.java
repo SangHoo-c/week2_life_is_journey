@@ -103,7 +103,7 @@ public class Fragment_Gallery extends Fragment {
         }
 
         public final void callImageViewer(int selectedIndex) {
-            Intent i = new Intent(mContext, image_inlarge.class);
+            Intent i = new Intent(mContext, Image_inlarge.class);
             //String imgPath = getImageInfo(imgData, geoData, thumbsIDList.get(selectedIndex));
             i.putExtra("arr_position", selectedIndex);
             Log.v("FileName : ", String.valueOf(selectedIndex));

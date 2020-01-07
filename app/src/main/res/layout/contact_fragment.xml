@@ -7,6 +7,8 @@
     android:background="#FFFFFF">
 
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/geomsaekchang"
         android:layout_marginTop="5dp"
         android:padding="5dp"
@@ -56,11 +58,11 @@
 
     <ImageView
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:id="@+id/contact_add_button"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/icon_contact_add"/>
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="25dp"
+        android:layout_gravity="left|bottom"
+        android:background="@drawable/icon_plus"/>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.recyclerview;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.recyclerview.gallery.Image_inlarge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +94,15 @@ public class FragmentTravel2 extends Fragment {
         title = (TextView) v.findViewById(R.id.selected_region);
         title.setText(travelRegionSelected.get(index).getKorName());
         galleryButton = (ImageView) v.findViewById(R.id.galleryButton);
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_gallery = new Intent(getActivity(), Image_inlarge.class);
+                intent_gallery.putExtra("country_code2", String.valueOf(1));
+//                intent_gallery.putExtra("country_code2", country_code2);
+                startActivity(intent_gallery);
+            }
+        });
         refreshButton = (ImageView) v.findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override

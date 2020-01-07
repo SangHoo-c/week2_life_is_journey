@@ -14,12 +14,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.recyclerview.R;
 
+import static java.lang.Integer.parseInt;
 
-public class image_inlarge extends AppCompatActivity {
+
+public class Image_inlarge extends AppCompatActivity {
     int MAX_PAGE = 3;
     Fragment cur_fragment = new Fragment();
-
     int country_code;
+    int country_code_from_main;
+    int country_code_from_tab3 = -1;
+
 
 
     @Override
@@ -33,8 +37,18 @@ public class image_inlarge extends AppCompatActivity {
         //무슨 나라인지 country_code 를 받을 수 있다.
         //0 --> santorin
         //1 --> rome..
-        country_code = getIntent().getIntExtra("arr_position",0);
-        Log.v("get position value : ", String.valueOf(country_code));
+        country_code_from_main = getIntent().getIntExtra("arr_position",-1);
+        Log.d("get position value : ", String.valueOf(country_code_from_main));
+
+        String tmp= getIntent().getStringExtra("country_code2");;
+        if(tmp !=null){
+            country_code_from_tab3 =  parseInt(tmp);
+        }
+//        country_code_from_tab3 = getIntent().getIntExtra("country_code2", -1);
+        Log.d("get position value : ", String.valueOf(country_code_from_tab3));
+
+        if(country_code_from_tab3 <0) country_code = country_code_from_main;
+        else country_code = country_code_from_tab3;
 
     }
 
