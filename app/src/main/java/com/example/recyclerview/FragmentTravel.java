@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class FragmentTravel extends Fragment {
     View v;
     ImageView nextButton;
+
 
     CheckBox btn_low_money, btn_high_money;
 
@@ -53,7 +55,6 @@ public class FragmentTravel extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTravel2 fragmentTravel2 = new FragmentTravel2();
                 CheckBox checkBox;
                 int resID;
                 ArrayList<String> travel_continent_selected = new ArrayList<>();
@@ -69,31 +70,41 @@ public class FragmentTravel extends Fragment {
                 for (String type : travel_type) {
                     resID = getResources().getIdentifier(type, "id", getActivity().getPackageName());
                     checkBox = (CheckBox) getActivity().findViewById(resID);
-                    if (checkBox.isChecked()) travel_type_selected.add(type);
+                    if (checkBox.isChecked()) travel_type_selected.add(Integer.toString(find(travel_type, type) + 1));
                 }
                 for (String money : travel_money) {
                     resID = getResources().getIdentifier(money, "id", getActivity().getPackageName());
                     checkBox = (CheckBox) getActivity().findViewById(resID);
-                    if (checkBox.isChecked()) travel_money_selected.add(money);
+                    if (checkBox.isChecked()) {
+                        if (money.equals("low_money")) travel_money_selected.add("0");
+                        else travel_money_selected.add("1");
+                    }
                 }
+                if (travel_continent_selected.size() == 0 || travel_type_selected.size() == 0 || travel_money_selected.size() == 0) {
+                    Toast.makeText(getActivity(), "항목별로 하나 이상을 선택해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Bundle args = new Bundle();
                 args.putStringArrayList("travel_continent_selected", travel_continent_selected);
                 args.putStringArrayList("travel_type_selected", travel_type_selected);
                 args.putStringArrayList("travel_money_selected", travel_money_selected);
-                fragmentTravel2.setArguments(args);
 
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(((ViewGroup) getView().getParent()).getId(), fragmentTravel2);
+                FragmentTravel2 fragmentTravel2 = new FragmentTravel2();
+                fragmentTravel2.setArguments(args);
+                fragmentTransaction.replace(R.id.fragment_travel, fragmentTravel2);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commitAllowingStateLoss();
-
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_travel, fragmentTravel2, "Change fragment")
-////                        .addToBackStack(null)
-//                        .commit();
             }
         });
         return v;
+    }
+
+    public static int find(String[] a, String target) {
+        for (int i = 0; i < a.length; i++) {
+            if (target.equals(a[i])) return i;
+        } return -1;
     }
 }
