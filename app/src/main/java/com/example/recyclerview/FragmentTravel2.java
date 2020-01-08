@@ -182,18 +182,21 @@ public class FragmentTravel2 extends Fragment implements OnMapReadyCallback, Pla
                                 JsonParser jsonParser = new JsonParser();
 //                                String str = "[{'_id':'a','photo_uri':'a','name':'박후민','phone_number':'010-3264-6509','email':'a','password':'abc','regions_visited':'a'.'salt':'a'}]";
                                 JsonArray jsonArray = (JsonArray) jsonParser.parse(response);
+                                int index = -1;
+                                if(jsonArray.size() >= 0) index = new Random().nextInt(jsonArray.size());
                                 for (int i = 0; i < jsonArray.size(); i++) {
                                     JsonObject object = (JsonObject) jsonArray.get(i);
                                     String name = object.get("name").getAsString();
                                     String photo_uri = object.get("photo_uri").getAsString();
                                     String phone_number = object.get("phone_number").getAsString();
                                     String email = object.get("email").getAsString();
-
+                                    if (index == i) {
+                                        String phone_number_with_tel = "tel:" + phone_number;
+                                        Uri number = Uri.parse(phone_number_with_tel);
+                                        Intent callIntent = new Intent(Intent.ACTION_CALL, number);
+                                        v.getContext().startActivity(callIntent);
+                                    }
                                 }
-//                                String[] users = response.split("},");
-//                                for (int i = 0; i < users.length; i++) {
-//                                    Log.d("으아아악", users[i]);
-//                                }
                             }
                         }));
              }
