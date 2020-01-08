@@ -67,15 +67,19 @@ public class FragmentContacts extends Fragment implements TextWatcher {
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     IRetrofit iRetrofit;
 
+
     // Constructor
     public FragmentContacts(String name) {
         this.accountName = name;
     }
 
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.contact_fragment, container, false);
         myRecyclerView = (RecyclerView) v.findViewById(R.id.my_recycler_view);
+
 
         recyclerAdapter = new RecyclerViewAdapterContacts(accountName, getContext(), listContact, getFragmentManager());
         myRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), R.drawable.divider)); // Add RecyclerView divider

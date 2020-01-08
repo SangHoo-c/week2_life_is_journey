@@ -3,6 +3,7 @@ package com.example.recyclerview.gallery;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,8 @@ import static java.lang.Integer.parseInt;
 
 
 public class Image_inlarge extends AppCompatActivity {
+
+
     int MAX_PAGE = 3;
     Fragment cur_fragment = new Fragment();
     int country_code;
@@ -30,11 +33,11 @@ public class Image_inlarge extends AppCompatActivity {
     };
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_image_slide);
+
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager_image);
         viewPager.setAdapter(new adapter(getSupportFragmentManager()));

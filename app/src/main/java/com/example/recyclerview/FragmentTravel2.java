@@ -3,6 +3,7 @@ package com.example.recyclerview;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -158,7 +159,7 @@ public class FragmentTravel2 extends Fragment implements OnMapReadyCallback, Pla
                 FragmentTravel2 newFragmentTravel2 = new FragmentTravel2();
                 newFragmentTravel2.setArguments(args);
                 fragmentTransaction.replace(((ViewGroup) getView().getParent()).getId(), newFragmentTravel2);
-                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commitAllowingStateLoss();
             }
         });
