@@ -94,17 +94,9 @@ public class FragmentTravel extends Fragment {
                 args.putStringArrayList("travel_type_selected", travel_type_selected);
                 args.putStringArrayList("travel_money_selected", travel_money_selected);
 
-
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
                 FragmentTravel2 fragmentTravel2 = new FragmentTravel2();
                 fragmentTravel2.setArguments(args);
                 getFragmentManager().beginTransaction().replace(R.id.fragment_travel, fragmentTravel2, null).addToBackStack(null).commit();
-
-//                fragmentTransaction.replace(R.id., fragmentTravel2);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commitAllowingStateLoss();
             }
         });
         return v;

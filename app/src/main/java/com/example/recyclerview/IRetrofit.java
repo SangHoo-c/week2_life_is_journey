@@ -54,4 +54,8 @@ public interface IRetrofit {
                                      @Field("name") String name,
                                      @Field("phone_number") String phone_number,
                                      @Field("photo_id") int photo_id);
+
+    @POST("getUserInfo")
+    @FormUrlEncoded
+    Observable<String> getUserInfo(@Field("region") String region);
 }

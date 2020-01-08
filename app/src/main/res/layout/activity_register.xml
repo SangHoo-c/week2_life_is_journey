@@ -59,6 +59,7 @@
             android:layout_marginLeft="20dp"
             android:inputType="textEmailAddress"
             android:hint="Please enter your name"
+            android:textColor="#000000"
             android:textColorHint="#808080"
             />
 
@@ -79,6 +80,7 @@
             android:layout_marginLeft="20dp"
             android:inputType="textEmailAddress"
             android:hint="Please enter your phone number"
+            android:textColor="#000000"
             android:textColorHint="#808080"
             />
 
@@ -99,6 +101,7 @@
             android:layout_marginLeft="20dp"
             android:inputType="textEmailAddress"
             android:hint="Please enter your email"
+            android:textColor="#000000"
             android:textColorHint="#808080"
             />
 
@@ -119,6 +122,7 @@
             android:layout_marginLeft="20dp"
             android:inputType="textPassword"
             android:hint="Please enter your password"
+            android:textColor="#000000"
             android:textColorHint="#808080"
             />
 

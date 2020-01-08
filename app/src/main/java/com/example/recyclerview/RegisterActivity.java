@@ -79,7 +79,7 @@ public class RegisterActivity extends Activity {
                 for (String region : regions) {
                     resID = getResources().getIdentifier(region, "id", getPackageName());
                     checkBox = (CheckBox) findViewById(resID);
-                    if (checkBox.isChecked()) regions_visited.add(region);
+                    if (checkBox.isChecked()) regions_visited.add(region.toLowerCase());
                 }
                 Log.d("name", register_name.getText().toString());
                 Log.d("register_email", register_email.getText().toString());
