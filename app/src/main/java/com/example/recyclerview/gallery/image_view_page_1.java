@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -225,7 +226,14 @@ public class image_view_page_1 extends Fragment {
 //                            fragmentTransaction.replace(((ViewGroup) getView().getParent()).getId(), new image_view_page_1());
 //                            fragmentTransaction.commitAllowingStateLoss();
                             FragmentTransaction ft = getFragmentManager().beginTransaction();
-                            ft.detach(p2m).attach(p2m).commit();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ft.detach(p2m).attach(p2m).commit();
+                                }
+                            },500);
+
                             flag=0;
 
                             Log.d("like it!!!", String.valueOf(todos.getLike()));

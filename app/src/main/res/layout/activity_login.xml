@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillViewport="true">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -47,16 +47,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="56dp"
             android:text="Email"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/edit_email"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="51dp"
             android:inputType="textEmailAddress"
             android:hint="Please enter your email"
             android:textColorHint="#808080"
@@ -67,16 +67,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="56dp"
             android:text="Password"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/edit_password"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="51dp"
             android:inputType="textPassword"
             android:hint="Please enter your password"
             android:textColorHint="#808080"
@@ -93,24 +93,32 @@
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:background="@drawable/grid_item_radius_3"
                 android:gravity="center"
                 android:text="LOGIN"
-                android:textSize="20dp"></Button>
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"></Button>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
 
             <Button
+                android:layout_weight="1"
                 android:id="@+id/btn_to_register"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/grid_item_radius_3"
                 android:gravity="center"
                 android:text="REGISTER"
-                android:textSize="20dp"></Button>
+                android:textSize="20dp"
+                android:layout_marginRight="25dp"></Button>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

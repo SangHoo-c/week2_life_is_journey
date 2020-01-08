@@ -3,6 +3,7 @@ package com.example.recyclerview;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.util.ArrayList;
 
@@ -33,6 +36,9 @@ public class FragmentTravel extends Fragment {
     final String[] travel_type = new String[]{"food", "scenery", "activity", "rest", "extreme"};
     final String[] travel_money = new String[]{"low_money", "high_money"};
 
+    LottieAnimationView animationView;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,12 @@ public class FragmentTravel extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_fragment_travel, container, false);
+
+        animationView = v.findViewById(R.id.next_button);
+        animationView.setAnimation("airplane.json");
+        animationView.loop(false);
+
+
         btn_low_money = v.findViewById(R.id.low_money);
         btn_high_money = v.findViewById(R.id.high_money);
         btn_low_money.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +71,8 @@ public class FragmentTravel extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                animationView.playAnimation();
+
                 CheckBox checkBox;
                 int resID;
                 ArrayList<String> travel_continent_selected = new ArrayList<>();
@@ -96,7 +110,15 @@ public class FragmentTravel extends Fragment {
 
                 FragmentTravel2 fragmentTravel2 = new FragmentTravel2();
                 fragmentTravel2.setArguments(args);
-                getFragmentManager().beginTransaction().replace(R.id.fragment_travel, fragmentTravel2, null).addToBackStack(null).commit();
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_travel, fragmentTravel2, null).addToBackStack(null).commit();
+                    }
+                },1000);
+
             }
         });
         return v;

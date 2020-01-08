@@ -2,6 +2,7 @@ package com.example.recyclerview;
 
 import android.content.Intent;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.view.Menu;
@@ -25,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
     public Fragment_Gallery fragmentGallery;
     public FragmentTravel fragmentTravel;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Intent intent = getIntent();
         String accountName = intent.getStringExtra("Name");

@@ -194,7 +194,9 @@
             android:text="상관 없음" />
     </LinearLayout>
 
-    <ImageView
+
+
+    <com.airbnb.lottie.LottieAnimationView
         android:layout_below="@+id/linear5"
         android:layout_centerHorizontal="true"
         android:layout_width="50dp"
@@ -203,5 +205,6 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/next_button"
         android:background="?actionBarItemBackground"
-        android:src="@drawable/airplane"/>
+        />
+
 </RelativeLayout>

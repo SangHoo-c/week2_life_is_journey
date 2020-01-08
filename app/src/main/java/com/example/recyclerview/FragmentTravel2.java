@@ -2,6 +2,7 @@ package com.example.recyclerview;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,9 +74,15 @@ public class FragmentTravel2 extends Fragment implements OnMapReadyCallback, Pla
     final String[] longitudes = new String[]{"126.9", "135.5", "141.35", "116.4", "100.53", "108.2", "121.56", "144.76", "151.2", "-149.58", "23.27"
             , "45.9", "29.96", "34.859", "55.22", "42.64", "2.16", "25.45", "2.35", "12.5", "14.25", "-2.48", "4.86", "-18.49", "-76.19", "-46.79", "-78.78", "-101.35", "-118.3", "-115.2"};
 
+    private static MediaPlayer mediaPlayer;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_fragment_travel2, container, false);
+
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.travel);
+        mediaPlayer.setLooping(false);
+        mediaPlayer.start();
 
         ArrayList<String> travel_continent_selected = getArguments().getStringArrayList("travel_continent_selected");
         ArrayList<String> travel_type_selected = getArguments().getStringArrayList("travel_type_selected");
@@ -132,7 +139,7 @@ public class FragmentTravel2 extends Fragment implements OnMapReadyCallback, Pla
             @Override
             public void onClick(View v) {
                 Intent intent_gallery = new Intent(getActivity(), Image_inlarge.class);
-                intent_gallery.putExtra("country_code2", String.valueOf(1));
+                intent_gallery.putExtra("country_code2", travelRegionSelected.get(index).getEngName());
 //                intent_gallery.putExtra("country_code2", country_code2);
                 startActivity(intent_gallery);
             }

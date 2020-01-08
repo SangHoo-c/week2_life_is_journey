@@ -23,6 +23,11 @@ public class Image_inlarge extends AppCompatActivity {
     int country_code;
     int country_code_from_main;
     int country_code_from_tab3 = -1;
+    String[] tmp_country = {
+            "Seoul","Osaka","Sapporo", "Beijing","Bangkok","Danang","Taipei","Guam","Sydney","Alaska",
+            "Congo","Madagascar","Egypt","Israel","Dubai","Iraq","Barcelona","Santorini","Paris","Rome",
+            "Napoli","England","Nederland","Iceland","Peru","Brazil","Cuba","Canada","Los Angeles","LAS VAGAS"
+    };
 
 
 
@@ -41,10 +46,16 @@ public class Image_inlarge extends AppCompatActivity {
         Log.d("get position value : ", String.valueOf(country_code_from_main));
 
         String tmp= getIntent().getStringExtra("country_code2");;
-        if(tmp !=null){
-            country_code_from_tab3 =  parseInt(tmp);
+
+
+        if(tmp != null){
+            for(int i=0; i<30; i++){
+                if(tmp.equals(tmp_country[i])){
+                    country_code_from_tab3 = i;
+                }
+            }
         }
-//        country_code_from_tab3 = getIntent().getIntExtra("country_code2", -1);
+
         Log.d("get position value : ", String.valueOf(country_code_from_tab3));
 
         if(country_code_from_tab3 <0) country_code = country_code_from_main;
