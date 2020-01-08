@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             .subscribe(new Consumer<String>() {
                 @Override
                 public void accept(String response) throws Exception {
-                    Toast.makeText(LoginActivity.this, "" + response, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "" + response, Toast.LENGTH_SHORT).show();
                     loginName = response.replace("\"", "");
                     Log.d("12312312", loginName);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
